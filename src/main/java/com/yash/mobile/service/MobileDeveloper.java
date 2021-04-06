@@ -35,8 +35,8 @@ public class MobileDeveloper implements MobileManufacturer {
 	public void getAllMobileNamesInOrder(MobileDeveloper developer) {
 		sortingOfMobileNames(developer);
 	}
-	
-	
+
+
 	/**
 	 * Creation of Mobiles
 	 * 
@@ -84,8 +84,8 @@ public class MobileDeveloper implements MobileManufacturer {
 	public void getAllMobileNames(MobileDeveloper developer) {
 		getAllMobileName(developer);
 	}
-	
-	
+
+
 	/**
 	 * Get All Mobiles
 	 * 
