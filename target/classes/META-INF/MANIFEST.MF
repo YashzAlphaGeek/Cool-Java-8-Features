@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: Java8
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: YAP1COB
+Implementation-Vendor-Id: com.yash
+Build-Jdk: 1.8.0_152
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/mobile
+Created-By: Maven Integration for Eclipse
+
