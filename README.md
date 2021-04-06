@@ -1,9 +1,6 @@
 ## Cool Java-8 Features
 
-Java 8 came out early last year—and Java 7 is now end of life—making Java 8 the only Oracle-supported option until Java 9 comes out at the end of next year. 
-However, since organizations value stability over trendiness, many of us are still working with Java 7, or even 6. 
-
-Java 8 introduced a series of ground-breaking features for the language, that proved to be more than useful for the everyday life of Java developers.
+Java 8 introduced a series of ground-breaking features for the language, that proved to be more than useful for the everyday life of Java developers.It improves application performance without any specific work or tuning.
 
 ## Features:
 + Lambda Expressions
