@@ -19,7 +19,20 @@ import com.yash.mobile.model.Mobile;
 public class MobileDeveloper implements MobileManufacturer {
 
 	List<Mobile> mobileList= new ArrayList<>();
-
+	
+	/**
+	 * Mobile Developer EmptyConstructor
+	 */
+	public MobileDeveloper() {
+		//Empty Constructor
+	}
+	
+	/**
+	 * Mobile Developer Constructor
+	 */
+	public MobileDeveloper(String message) {
+		System.out.println("Mobile Development is in Progress");
+	}
 
 	@Override
 	public void addMobile(Mobile mobile) {
@@ -44,18 +57,17 @@ public class MobileDeveloper implements MobileManufacturer {
 	 * 
 	 */
 	public void createMobiles(MobileDeveloper developer) {
-		developer.addMobile(new Mobile("Huawei Mate 40E", "GSM / CDMA / HSPA / CDMA2000 / LTE / 5G", "Available. Released 2021, March 18", 
-				"Li-Po 4200 mAh, non-removable", "Android 10, EMUI 11, no Google Play Services", "Kirin 990E 5G (7 nm+)", 600));
-		developer.addMobile(new Mobile("Huawei P40 4G", "GSM / HSPA / LTE", "Available. Released 2021, February 26", 
-				"Li-Po 4200 mAh, non-removable", "Android 10, EMUI 11, no Google Play Services", "Kirin 990E 5G (7 nm+)", 500));
-		developer.addMobile(new Mobile("Huawei Mate 40 RS Porsche Design", "GSM / HSPA / LTE / 5G", "Available. Released 2020, November 04", 
-				"Li-Po 4200 mAh, non-removable", "Android 10, EMUI 11, no Google Play Services", "Kirin 990E 5G (7 nm+)", 300));
-		developer.addMobile(new Mobile("Huawei Enjoy 20 5G", "GSM / CDMA / HSPA / CDMA2000 / LTE / 5G", "Available. Released 2021, March 18", 
-				"Li-Po 4200 mAh, non-removable", "Android 10, EMUI 11, no Google Play Services", "Kirin 990E 5G (7 nm+)", 800));
-		developer.addMobile(new Mobile("Huawei Enjoy Tablet 2", "GSM / CDMA / HSPA / CDMA2000 / LTE / 5G", "Available. Released 2021, March 18", 
-				"Li-Po 4200 mAh, non-removable", "Android 10, EMUI 11, no Google Play Services", "Kirin 990E 5G (7 nm+)", 700));
+		developer.addMobile(new Mobile("Huawei Mate 40E", "GSM / CDMA / HSPA / CDMA2000 / LTE / 5G", "Available", 
+				4200, "Android 10, EMUI 11, no Google Play Services", "Kirin 990E 5G (7 nm+)", 600));
+		developer.addMobile(new Mobile("Huawei P40 4G", "GSM / HSPA / LTE", "Available", 
+				5100, "Android 10, EMUI 11, no Google Play Services", "Kirin 990E 5G (7 nm+)", 500));
+		developer.addMobile(new Mobile("Huawei Mate 40 RS Porsche Design", "GSM / HSPA / LTE / 5G", "Available", 
+				5100, "Android 10, EMUI 11, no Google Play Services", "Kirin 990E 5G (7 nm+)", 300));
+		developer.addMobile(new Mobile("Huawei Enjoy 20 5G", "GSM / CDMA / HSPA / CDMA2000 / LTE / 5G", "Available", 
+				4000, "Android 10, EMUI 11, no Google Play Services", "Kirin 990E 5G (7 nm+)", 800));
+		developer.addMobile(new Mobile("Huawei Enjoy Tablet 2", "GSM / CDMA / HSPA / CDMA2000 / LTE / 5G", "Not-Available", 
+				3100, "Android 10, EMUI 11, no Google Play Services", "Kirin 990E 5G (7 nm+)", 700));
 	}
-
 
 
 
@@ -129,7 +141,36 @@ public class MobileDeveloper implements MobileManufacturer {
 	private void filterMobileNamesBasedOnPrice(MobileDeveloper developer) {
 		System.out.println("Filtering Using Lambda Expression");
 		Stream<Mobile> filterMobiles = developer.getAllMobile().stream().filter(mobile->mobile.getMobilePriceInEUR()>600);
-		filterMobiles.forEach(mobile->System.out.println("Mobile Name:"+mobile.getMobileName() +" " +"Mobile Price:"+mobile.getMobilePriceInEUR()));
+		filterMobiles.forEach(mobile->System.out.println("Mobile Name:"+mobile.getMobileName() +"|" +"Mobile Price:"+mobile.getMobilePriceInEUR()));
+	}
+
+	/**
+	 * Filtering of Mobile Names Based on Status
+	 * 
+	 * Static Method Referencing
+	 * 
+	 * @param developer
+	 */
+	public static void getAllMobileBasedOnStatus(Mobile mobile) {
+		if(mobile.getMobileStatus().equalsIgnoreCase("Available"))
+		{
+			System.out.println("Mobile Name:"+mobile.getMobileName()+"|"+"Status:"+mobile.getMobileStatus());
+		}
+	}
+
+	
+	/**
+	 * Filtering of Mobile Names Based on Battery Capacity
+	 * 
+	 * Static Method Referencing
+	 * 
+	 * @param developer
+	 */
+	public  void getAllMobileBasedOnBatteryCapacity(Mobile mobile) {
+		if(mobile.getMobileBatteryCapacity()>4100)
+		{
+			System.out.println("Mobile Name:"+mobile.getMobileName()+"|"+"Mobile Battery Capacity:"+mobile.getMobileBatteryCapacity());
+		}
 	}
 
 }

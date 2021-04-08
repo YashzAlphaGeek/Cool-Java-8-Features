@@ -20,9 +20,9 @@ public class Mobile {
 	
 	private String mobileNetworkTechnology;
 	
-	private String mobileLaunchStatus;
+	private String mobileStatus;
 
-	private String mobileBatteryType;
+	private long mobileBatteryCapacity;
 	
 	private String mobilePlatformOS;
 	

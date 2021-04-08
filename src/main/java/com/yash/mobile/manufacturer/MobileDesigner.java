@@ -11,5 +11,6 @@ package com.yash.mobile.manufacturer;
 public interface MobileDesigner {
 	
 	public String appendMobileNameAndColor(String color);
+	
 
 }

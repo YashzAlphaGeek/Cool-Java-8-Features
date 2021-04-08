@@ -4,7 +4,6 @@
 package com.yash.mobile.manufacturer;
 
 import java.util.List;
-
 import com.yash.mobile.model.Mobile;
 import com.yash.mobile.service.MobileDeveloper;
 
@@ -23,5 +22,6 @@ public interface MobileManufacturer {
 	public void getAllMobileNamesInOrder(MobileDeveloper developer);
 	
 	public void getAllMobilesNameBasedOnPrice(MobileDeveloper developer);
+	
 	
 }
