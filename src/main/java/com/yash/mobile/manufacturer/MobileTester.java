@@ -13,6 +13,6 @@ import com.yash.mobile.service.MobileTesters;
 @FunctionalInterface
 public interface MobileTester {
 
-	public MobileTesters getCountOfTestedMobiles(MobileDeveloper developer);
+	public MobileTesters getCountOfMobilesToBeTestedBasedOnStatus(MobileDeveloper developer);
 	
 }

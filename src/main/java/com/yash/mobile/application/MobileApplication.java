@@ -37,6 +37,7 @@ public class MobileApplication{
 	}
 
 	/**
+	 * 
 	 * Method Referencing
 	 * 
 	 * @param developer - Developer
@@ -50,7 +51,7 @@ public class MobileApplication{
 		System.out.println();
 		System.out.println("Reference to Constructor");
 		MobileTester tester=MobileTesters::new;
-		tester.getCountOfTestedMobiles(developer);
+		tester.getCountOfMobilesToBeTestedBasedOnStatus(developer);
 	}
 
 }

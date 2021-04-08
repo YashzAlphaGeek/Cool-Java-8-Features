@@ -14,6 +14,8 @@ import com.yash.mobile.model.Mobile;
 public class MobileTesters {
 
 	/**
+	 * Get Mobile Count based on Mobile Availability
+	 * 
 	 * Providing the count of tested mobiles
 	 */
 	public MobileTesters(MobileDeveloper developer) {
