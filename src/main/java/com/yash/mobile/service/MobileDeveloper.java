@@ -217,14 +217,14 @@ public class MobileDeveloper implements MobileManufacturer {
 		{
 			if(mobileCondition.test(mob, mob))
 			{
-				System.out.println("BiPredict returns "+mobileCondition.test(mob, mob));
+				System.out.println("BiPredicate returns "+mobileCondition.test(mob, mob));
 				getAllDetailsOfMobile(mob);
 				break;
 			}
 			else
 			{
 				//If Mobile Doesn't Exist - Return False
-				System.out.println("BiPredict returns "+mobileCondition.test(mob, mob));
+				System.out.println("BiPredicate returns "+mobileCondition.test(mob, mob));
 			}
 		}
 		System.out.println();
