@@ -6,6 +6,12 @@ package com.yash.mobile.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.function.BiConsumer;
+import java.util.function.BiFunction;
+import java.util.function.BiPredicate;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import com.yash.mobile.manufacturer.MobileDesigner;
@@ -19,14 +25,14 @@ import com.yash.mobile.model.Mobile;
 public class MobileDeveloper implements MobileManufacturer {
 
 	List<Mobile> mobileList= new ArrayList<>();
-	
+
 	/**
 	 * Mobile Developer EmptyConstructor
 	 */
 	public MobileDeveloper() {
 		//Empty Constructor
 	}
-	
+
 	/**
 	 * Mobile Developer Constructor
 	 */
@@ -85,13 +91,15 @@ public class MobileDeveloper implements MobileManufacturer {
 		Collections.sort(allMobile, (firstMobile,secondMobile)->
 		{
 			return firstMobile.getMobileName().compareTo(secondMobile.getMobileName());	
-		}
-				);
+		});
 		allMobile.forEach(mobile->System.out.println(mobile.getMobileName()));
 	}
 
 
 
+	/**
+	 * Get All Mobile Names
+	 */
 	@Override
 	public void getAllMobileNames(MobileDeveloper developer) {
 		getAllMobileName(developer);
@@ -158,7 +166,7 @@ public class MobileDeveloper implements MobileManufacturer {
 		}
 	}
 
-	
+
 	/**
 	 * Filtering of Mobile Names Based on Battery Capacity
 	 * 
@@ -172,5 +180,142 @@ public class MobileDeveloper implements MobileManufacturer {
 			System.out.println("Mobile Name:"+mobile.getMobileName()+"|"+"Mobile Battery Capacity:"+mobile.getMobileBatteryCapacity());
 		}
 	}
+	
+
+	/**
+	 * Check For Huawai Enjoy Mobile
+	 *
+	 */
+	@Override
+	public void checkForHuaweiEnjoyMobile(Predicate<Mobile> mobileCondition) {
+		System.out.println("Functional Interface - Predicate");
+		for(Mobile mob:getAllMobile())
+		{
+			if(mobileCondition.test(mob))
+			{
+				System.out.println("Predict returns "+mobileCondition.test(mob));
+				increaseTheCostOfMobile();
+				break;
+			}
+			else
+			{
+				//If Mobile Doesn't Exist - Return False
+				System.out.println("Predict returns "+mobileCondition.test(mob));
+			}
+		}
+		System.out.println();
+	}
+	
+	/**
+	 * Check For Huawai Enjoy Mobile Name and Price Matching or Not
+	 * 
+	 * @param mobileConditionPredTwo
+	 */
+	public void checkForHuaweiEnjoyMobileAndPrice(BiPredicate<Mobile, Mobile> mobileCondition) {
+		System.out.println("Functional Interface - BiPredicate");
+		for(Mobile mob:getAllMobile())
+		{
+			if(mobileCondition.test(mob, mob))
+			{
+				System.out.println("BiPredict returns "+mobileCondition.test(mob, mob));
+				getAllDetailsOfMobile(mob);
+				break;
+			}
+			else
+			{
+				//If Mobile Doesn't Exist - Return False
+				System.out.println("BiPredict returns "+mobileCondition.test(mob, mob));
+			}
+		}
+		System.out.println();
+	}
+
+	/**
+	 * Increase the cost of the first mobile
+	 */
+	private void increaseTheCostOfMobile() {
+		Mobile mobile = getAllMobile().stream().findFirst().get();
+		mobile.setMobilePriceInEUR(6000);
+		getAllDetailsOfMobile(mobile);
+	}
+
+	@Override
+	public void getAllDetailsOfMobile(Mobile mobile) {
+		System.out.println("Mobile Name:"+mobile.getMobileName());
+		System.out.println("Mobile Network Technology:"+mobile.getMobileNetworkTechnology());
+		System.out.println("Mobile Platform Chipset:"+mobile.getMobilePlatformChipSet());
+		System.out.println("Mobile PlatformOS:"+mobile.getMobilePlatformOS());
+		System.out.println("Mobile Battery Capacity(maH):"+mobile.getMobileBatteryCapacity());
+		System.out.println("Mobile Status:"+mobile.getMobileStatus());
+		System.out.println("Mobile Price(in EUR):"+mobile.getMobilePriceInEUR());
+	}
+
+	public void getAllMobileNameWithBatteryCapacity(Consumer<Mobile> mobilesConsumer,List<Mobile> mobileList)
+	{
+		System.out.println("Functional Interface - Consumer");
+		getAllMobile().stream().forEach(mobile->mobilesConsumer.accept(mobile));
+		System.out.println();
+	}
+
+	
+	/**
+	 * Get All Mobile Names With Increased Battery Capacity with 10
+	 * 
+	 * @param mobileBiConsumer
+	 * @param allMobile
+	 */
+	public void getAllMobileNameWithIncreasedBatteryCapacity(BiConsumer<Mobile, Long> mobileBiConsumer,
+			List<Mobile> allMobile) {
+		System.out.println("Functional Interface - BiConsumer");
+		Long increasedBat=Long.parseLong("10");
+		getAllMobile().stream().forEach(mobile->
+		{
+		mobile.setMobileBatteryCapacity(mobile.getMobileBatteryCapacity()+increasedBat);
+		mobileBiConsumer.accept(mobile,increasedBat);
+		});
+		System.out.println();
+	}
+
+	/**
+	 * Check For Mobile Price Greater Than 1000K
+	 * 
+	 * @param mobileFunction
+	 * @param mobilePriceCheck
+	 */
+	public void checkMobilePriceGreaterThan1K(List<Mobile> allMobile,
+			Function<Mobile, Boolean> mobilePriceCheck) {
+		System.out.println("Functional Interface - Function");
+		allMobile.stream().forEach(mob->System.out.println("Mobile Name:"+mob.getMobileName()+"---->"+
+				"Mobile Price:"+mob.getMobilePriceInEUR()+"---->"+mobilePriceCheck.apply(mob)));
+		System.out.println();
+	}
+
+
+	/**
+	 * Returns Developer Name
+	 * 
+	 * @return
+	 */
+	public static String getDeveloperName()
+	{
+		System.out.println("Functional Interface - Supplier");
+		return "Developer::>Yashwanth";
+	}
+
+	/**
+	 * Check For Mobile Price Greater Than 5000K & Status - Availability
+	 * 
+	 * @param allMobile
+	 * @param mobilePriceAndStatusCheck
+	 */
+	public void checkMobilePriceLessThan5kAndStatus(List<Mobile> allMobile,
+			BiFunction<Mobile, Mobile, Boolean> mobilePriceAndStatusCheck) {
+		System.out.println("Functional Interface - BiFunction");
+		allMobile.stream().forEach(mob->System.out.println("Mobile Name:"+mob.getMobileName()+"---->"+
+				"Mobile Price:"+mob.getMobilePriceInEUR()+"---->"+"Mobile Status:"+mob.getMobileStatus()+"---->"+mobilePriceAndStatusCheck.apply(mob,mob)));
+		System.out.println();
+	}
+
+
 
 }

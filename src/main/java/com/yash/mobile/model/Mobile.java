@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Mobile {
+public  class Mobile {
 
 	private String mobileName;
 	
@@ -29,5 +29,6 @@ public class Mobile {
 	private String mobilePlatformChipSet;
 	
 	private long mobilePriceInEUR;
+	
 	
 }

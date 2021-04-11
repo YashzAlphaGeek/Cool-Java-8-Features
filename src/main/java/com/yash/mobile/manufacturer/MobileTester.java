@@ -15,4 +15,5 @@ public interface MobileTester {
 
 	public MobileTesters getCountOfMobilesToBeTestedBasedOnStatus(MobileDeveloper developer);
 	
+	
 }
