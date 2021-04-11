@@ -12,7 +12,7 @@ Java 8 introduced a series of ground-breaking features for the language, that pr
    + Reference to a static method
    + Reference to instance method
    + Reference to constructor
-
+ + Functional Interfaces :hushed:
 
 
 ## Lambda Expression: :scream:
@@ -169,7 +169,7 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
       }
   </code></pre>
   
-  Calling of Static Method in Main Application
+  Invoking of Static Method Reference
   
   <pre><code>
   developer.getAllMobile().forEach(<b>MobileDeveloper::getAllMobileBasedOnStatus</b>);
@@ -205,7 +205,7 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
     }
   </pre></code>
   
-  Calling of Instance Method in Main Application
+  Invoking of Instance Method Reference
   
   <pre><code>
   developer.getAllMobile().forEach(<b>developer::getAllMobileBasedOnBatteryCapacity</b>);
@@ -251,7 +251,7 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
       }
   </code></pre>
   
-  Calling of Constructor in Main Application
+  Invoking of Constructor 
   
   <pre><code>
     MobileTester tester=<b>MobileTesters::new</b>;
@@ -260,3 +260,244 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
   
    #### Outcome : :smiley:
    ![](https://github.com/YashzAlphaGeek/cool-java-8-features/blob/master/imgs/ReferencingToConstructor.png)
+
+## Functional Interfaces: :hushed:
+   ![](https://github.com/YashzAlphaGeek/cool-java-8-features/blob/master/imgs/Functional_Interfaces.png)
+   
+   # When to use Functional Interfaces :eyes:
+   
+   ## Predicate
+   
+   Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer to <b>check for Huawei Enjoy 20 5G Mobile to increase the cost of the mobile</b>. 
+  
+   <pre><code>
+       /**
+       * Check For Huawai Enjoy Mobile
+       *
+       */
+      @Override
+      public void checkForHuaweiEnjoyMobile(<b>Predicate< Mobile > mobileCondition</b>) {
+        System.out.println("Functional Interface - Predicate");
+        for(Mobile mob:getAllMobile())
+        {
+          if(<b>mobileCondition.test(mob)</b>)
+          {
+            System.out.println("Predict returns "+mobileCondition.test(mob));
+            increaseTheCostOfMobile();
+            break;
+          }
+          else
+          {
+            //If Mobile Doesn't Exist - Return False
+            System.out.println("Predict returns "+mobileCondition.test(mob));
+          }
+        }
+        System.out.println();
+      }
+   </code></pre>
+   
+   Invoking of Predicate
+   
+   <pre><code>
+      //Predicate - Provides True or False based on the Argument[Takes A Input] -> return (boolean) 
+      <b>Predicate< Mobile > mobileConditionPredOne = mobile->mobile.getMobileName().equals("Huawei Enjoy 20 5G");</b>
+      developer.checkForHuaweiEnjoyMobile(mobileConditionPredOne);
+   </code></pre>
+   
+   #### Outcome : :smiley:
+   ![](https://github.com/YashzAlphaGeek/cool-java-8-features/blob/master/imgs/Functional_Interfaces_Predicate.png)
+   
+   
+   ## BiPredicate
+   
+   Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer to <b>check for Huawei Enjoy 20 5G Mobile and Price equals 6000</b>. 
+   
+   <pre><code>
+       /**
+       * Check For Huawai Enjoy Mobile Name and Price Matching or Not
+       * 
+       * @param mobileConditionPredTwo
+       */
+      public void checkForHuaweiEnjoyMobileAndPrice(<b>BiPredicate< Mobile, Mobile > mobileCondition</b>) {
+        System.out.println("Functional Interface - BiPredicate");
+        for(Mobile mob:getAllMobile())
+        {
+          if(<b>mobileCondition.test(mob, mob)</b>)
+          {
+            System.out.println("BiPredicate returns "+mobileCondition.test(mob, mob));
+            getAllDetailsOfMobile(mob);
+            break;
+          }
+          else
+          {
+            //If Mobile Doesn't Exist - Return False
+            System.out.println("BiPredicate returns "+mobileCondition.test(mob, mob));
+          }
+        }
+        System.out.println();
+      }
+   </code></pre>
+   
+   Invoking of BiPredicate
+   
+   <pre><code>
+     //BiPredicate - Provides True or False based on the Argument[Takes Two Input] -> return (boolean)
+     <b>BiPredicate< Mobile, Mobile > mobileConditionPredTwo=(mobileName,mobilePrice)->mobileName.getMobileName().equals("Huawei Enjoy 20 5G") && mobilePrice.getMobilePriceInEUR()==6000;</b>
+     developer.checkForHuaweiEnjoyMobileAndPrice(mobileConditionPredTwo);
+   </code></pre>
+   
+   #### Outcome : :smiley:
+   ![](https://github.com/YashzAlphaGeek/cool-java-8-features/blob/master/imgs/Functional_Interfaces_BiPredicate.png)
+   
+   
+   ## Consumer
+   
+   Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer to <b>list all mobile names with battery capacity</b>. 
+   
+   <pre><code>
+      public void getAllMobileNameWithBatteryCapacity(<b>Consumer< Mobile > mobilesConsumer</b>,List<Mobile> mobileList)
+      {
+        System.out.println("Functional Interface - Consumer");
+        getAllMobile().stream().forEach(mobile-><b>mobilesConsumer.accept(mobile)</b>);
+        System.out.println();
+      }
+   </code></pre>
+   
+   Invoking of Consumer
+   
+   <pre><code>
+       //Consumer - Performs an Operations by taking single input - Doesn't return anything (void)
+        <b>Consumer< Mobile > mobileConsumer=(mob)->System.out.println("Mobile Name:"+mob.getMobileName(
+            )+"|"+"Mobile Battery Capacity:"+mob.getMobileBatteryCapacity());</b> 
+        developer.getAllMobileNameWithBatteryCapacity(mobileConsumer, developer.getAllMobile());
+   </code></pre>
+   
+   #### Outcome : :smiley:
+   ![](https://github.com/YashzAlphaGeek/cool-java-8-features/blob/master/imgs/Functional_Interfaces_Consumer.png)
+   
+   ## BiConsumer
+   
+   Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer to <b>list all mobile names with increased battery capacity</b>. 
+   
+   <pre><code>
+        /**
+       * Get All Mobile Names With Increased Battery Capacity with 10
+       * 
+       * @param mobileBiConsumer
+       * @param allMobile
+       */
+      public void getAllMobileNameWithIncreasedBatteryCapacity(<b>BiConsumer< Mobile, Long > mobileBiConsumer</b>,
+          List<Mobile> allMobile) {
+        System.out.println("Functional Interface - BiConsumer");
+        Long increasedBat=Long.parseLong("10");
+        getAllMobile().stream().forEach(mobile->
+        {
+        mobile.setMobileBatteryCapacity(mobile.getMobileBatteryCapacity()+increasedBat);
+        <b>mobileBiConsumer.accept(mobile,increasedBat)</b>;
+        });
+        System.out.println();
+      }
+   </code></pre>
+   
+   Invoking of BiConsumer
+   
+   <pre><code>
+     //BiConsumer - Performs an Operations by taking two input - Doesn't return anything (void)
+      <b>BiConsumer< Mobile, Long > mobileBiConsumer=(mob,mobBattery)->System.out.println(mob.getMobileName()+"|"+mob.getMobileBatteryCapacity());</b>
+      developer.getAllMobileNameWithIncreasedBatteryCapacity(mobileBiConsumer, developer.getAllMobile());   
+    </code></pre>
+   
+   #### Outcome : :smiley:
+   ![](https://github.com/YashzAlphaGeek/cool-java-8-features/blob/master/imgs/Functional_Interfaces_BiConsumer.png)
+   
+   ## Function
+   
+   Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer to <b>check of mobiles for their price greater than 1K</b>. 
+   
+   <pre><code>
+         /**
+         * Check For Mobile Price Greater Than 1000K
+         * 
+         * @param mobileFunction
+         * @param mobilePriceCheck
+         */
+        public void checkMobilePriceGreaterThan1K(List<Mobile> allMobile,
+            <b>Function< Mobile, Boolean > mobilePriceCheck</b>) {
+          System.out.println("Functional Interface - Function");
+          allMobile.stream().forEach(mob->System.out.println("Mobile Name:"+mob.getMobileName()+"---->"+
+              "Mobile Price:"+mob.getMobilePriceInEUR()+"---->"+<b>mobilePriceCheck.apply(mob)</b>));
+          System.out.println();
+        }
+   </code></pre>
+   
+   Invoking of Function
+   
+   <pre><code>
+      //Function - Performs an Operation with single input and provides expected result Function<T,R> T-Input & R-Result
+      <b>Function< Mobile,Boolean > mobilePriceCheck=(mob)->mob.getMobilePriceInEUR()>1000;</b>
+      developer.checkMobilePriceGreaterThan1K(developer.getAllMobile(),mobilePriceCheck);    
+    </code></pre>
+   
+   #### Outcome : :smiley:
+   ![](https://github.com/YashzAlphaGeek/cool-java-8-features/blob/master/imgs/Functional_Interfaces_Function.png)
+   
+   ## BiFunction
+   
+   Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer to <b>check of mobiles for their price less than 5K and Status(Availability)</b>. 
+   
+   <pre><code>
+       **
+       * Check For Mobile Price Greater Than 5000K & Status - Availability
+       * 
+       * @param allMobile
+       * @param mobilePriceAndStatusCheck
+       */
+      public void checkMobilePriceLessThan5kAndStatus(List<Mobile> allMobile,
+          <b>BiFunction< Mobile, Mobile, Boolean > mobilePriceAndStatusCheck</b>) {
+        System.out.println("Functional Interface - BiFunction");
+        allMobile.stream().forEach(mob->System.out.println("Mobile Name:"+mob.getMobileName()+"---->"+
+            "Mobile Price:"+mob.getMobilePriceInEUR()+"---->"+"Mobile Status:"+mob.getMobileStatus()+"---->"+<b>mobilePriceAndStatusCheck.apply(mob,mob)</b>));
+        System.out.println();
+      }
+   </code></pre>
+   
+   Invoking of BiFunction
+   
+   <pre><code>
+        //BiFunction - Performs an Operation with multiple input and provides expected result Function<T,R> T-Input & R-Result
+        <b>BiFunction< Mobile, Mobile, Boolean > mobilePriceAndStatusCheck=(mobPrice,mobStatus)->mobPrice.getMobilePriceInEUR()<5000 && mobStatus.getMobileStatus().equalsIgnoreCase("Available");</b>
+        developer.checkMobilePriceLessThan5kAndStatus(developer.getAllMobile(),mobilePriceAndStatusCheck);
+    </code></pre>
+   
+   #### Outcome : :smiley:
+   ![](https://github.com/YashzAlphaGeek/cool-java-8-features/blob/master/imgs/Functional_Interfaces_BiFunction.png)
+   
+   
+   ## Supplier
+   
+   Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer to <b>get Developer Name</b>. 
+   
+   <pre><code>
+       /**
+       * Returns Developer Name
+       * 
+       * @return
+       */
+      public static String <b>getDeveloperName()</b>
+      {
+        System.out.println("Functional Interface - Supplier");
+        return "Developer::>Yashwanth";
+      }
+   </code></pre>
+   
+   Invoking of Supplier
+   
+   <pre><code>
+      //Suppiler - Returns a value without any input
+      <b>Supplier< String > mobiles=()->MobileDeveloper.getDeveloperName();</b>
+      System.out.println(<b>mobiles.get()</b>);
+    </code></pre>
+    
+   #### Outcome : :smiley:
+   ![](https://raw.githubusercontent.com/YashzAlphaGeek/Cool-Java-8-Features/master/imgs/Functional_Interfaces_Supplier.png) 
+  
