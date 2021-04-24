@@ -27,6 +27,19 @@ public class MobileApplication{
 		lambdaExpression(developer);
 		methodReferencing(developer);
 		functionalInterfaces(developer);
+		streamAPIs(developer);
+	}
+
+	/**
+	 * Stream APIs
+	 * 
+	 * @param developer
+	 */
+	private static void streamAPIs(MobileDeveloper developer) {
+		System.out.println("Stream API");
+		developer.getMaxPriceAndMinPriceMobile(developer);
+		System.out.println("Stream Filter");
+		developer.getMaxMobliePriceAndNameInMap(developer);
 	}
 
 	/**

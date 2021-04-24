@@ -16,7 +16,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public  class Mobile {
 
-	private String mobileName;
+	public String mobileName;
 	
 	private String mobileNetworkTechnology;
 	
@@ -28,7 +28,7 @@ public  class Mobile {
 	
 	private String mobilePlatformChipSet;
 	
-	private long mobilePriceInEUR;
+	public long mobilePriceInEUR;
 	
 	
 }

@@ -6,12 +6,14 @@ package com.yash.mobile.service;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.BiPredicate;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.yash.mobile.manufacturer.MobileDesigner;
@@ -180,7 +182,7 @@ public class MobileDeveloper implements MobileManufacturer {
 			System.out.println("Mobile Name:"+mobile.getMobileName()+"|"+"Mobile Battery Capacity:"+mobile.getMobileBatteryCapacity());
 		}
 	}
-	
+
 
 	/**
 	 * Check For Huawai Enjoy Mobile
@@ -205,7 +207,7 @@ public class MobileDeveloper implements MobileManufacturer {
 		}
 		System.out.println();
 	}
-	
+
 	/**
 	 * Check For Huawai Enjoy Mobile Name and Price Matching or Not
 	 * 
@@ -257,7 +259,7 @@ public class MobileDeveloper implements MobileManufacturer {
 		System.out.println();
 	}
 
-	
+
 	/**
 	 * Get All Mobile Names With Increased Battery Capacity with 10
 	 * 
@@ -270,8 +272,8 @@ public class MobileDeveloper implements MobileManufacturer {
 		Long increasedBat=Long.parseLong("10");
 		getAllMobile().stream().forEach(mobile->
 		{
-		mobile.setMobileBatteryCapacity(mobile.getMobileBatteryCapacity()+increasedBat);
-		mobileBiConsumer.accept(mobile,increasedBat);
+			mobile.setMobileBatteryCapacity(mobile.getMobileBatteryCapacity()+increasedBat);
+			mobileBiConsumer.accept(mobile,increasedBat);
 		});
 		System.out.println();
 	}
@@ -314,6 +316,40 @@ public class MobileDeveloper implements MobileManufacturer {
 		allMobile.stream().forEach(mob->System.out.println("Mobile Name:"+mob.getMobileName()+"---->"+
 				"Mobile Price:"+mob.getMobilePriceInEUR()+"---->"+"Mobile Status:"+mob.getMobileStatus()+"---->"+mobilePriceAndStatusCheck.apply(mob,mob)));
 		System.out.println();
+	}
+
+
+	/**
+	 * Get Max and Min Price Mobile
+	 */
+	@Override
+	public void getMaxPriceAndMinPriceMobile(MobileDeveloper developer) {
+		getMaxAndMinPriceMobileDetail(developer.getAllMobile());
+	}
+
+	/**
+	 * Get Max and Min Price Mobile Details
+	 * 
+	 * @param allMobile
+	 */
+	private void getMaxAndMinPriceMobileDetail(List<Mobile> allMobile) {
+		Mobile maxPricedMobile = allMobile.stream().max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()>secondMob.getMobilePriceInEUR()?1:-1).get();
+		Mobile minPricedMobile = allMobile.stream().max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()<secondMob.getMobilePriceInEUR()?1:-1).get();
+		System.out.println("Highest Priced Mobile:");
+		System.out.println("Mobile Name:"+maxPricedMobile.getMobileName()+"|"+"Mobile Price:"+maxPricedMobile.getMobilePriceInEUR());
+		System.out.println("Lowest Priced Mobile:");
+		System.out.println("Mobile Name:"+minPricedMobile.getMobileName()+"|"+"Mobile Price:"+minPricedMobile.getMobilePriceInEUR());
+		System.out.println();
+	}
+
+	/**
+	 * Get Mobile Price & Name in Map
+	 * 
+	 * @param developer
+	 */
+	public void getMaxMobliePriceAndNameInMap(MobileDeveloper developer) {
+		Map<Long,String> productPriceMap =developer.getAllMobile().stream().filter(mob->mob.getMobilePriceInEUR()>5000).collect(Collectors.toMap(mob->mob.mobilePriceInEUR, mob->mob.mobileName));
+		System.out.println(productPriceMap);
 	}
 
 

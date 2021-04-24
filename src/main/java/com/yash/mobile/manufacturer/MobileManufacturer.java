@@ -65,4 +65,11 @@ public interface MobileManufacturer {
 	 */
 	public void getAllDetailsOfMobile(Mobile mobile);
 	
+	/**
+	 * Get Max Price And Min Price Mobile
+	 * 
+	 * @param developer
+	 */
+	public void getMaxPriceAndMinPriceMobile(MobileDeveloper developer);
+	
 }
