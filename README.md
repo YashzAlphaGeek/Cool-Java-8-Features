@@ -523,8 +523,8 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
        * @param allMobile
        */
         private void getMaxAndMinPriceMobileDetail(List<Mobile> allMobile) {
-        Mobile maxPricedMobile =  allMobile.stream(). <b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()>secondMob.getMobilePriceInEUR()?1:-1).get(); <\b>
-        Mobile minPricedMobile =  allMobile.stream(). <b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()<secondMob.getMobilePriceInEUR()?1:-1).get(); <\b>
+        <b>Mobile maxPricedMobile = allMobile.stream().max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()>secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
+        <b>Mobile minPricedMobile = allMobile.stream().max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()<secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
         System.out.println("Highest Priced Mobile:");
         System.out.println("Mobile Name:"+maxPricedMobile.getMobileName()+"|"+"Mobile Price:"+maxPricedMobile.getMobilePriceInEUR());
         System.out.println("Lowest Priced Mobile:");
@@ -542,7 +542,7 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
          * @param developer
          */
          public void getMaxMobliePriceAndNameInMap(MobileDeveloper developer) {
-         Map<Long,String> productPriceMap =developer.getAllMobile().stream().<b> filter(mob->mob.getMobilePriceInEUR()>5000)</b>.collect(Collectors.<b>toMap(mob->mob.mobilePriceInEUR, mob->mob.mobileName) </b> );
+         <b>Map<Long,String> productPriceMap =developer.getAllMobile().stream().filter(mob->mob.getMobilePriceInEUR()>5000)</b>.collect(Collectors.<b>toMap(mob->mob.mobilePriceInEUR, mob->mob.mobileName));</b>
          System.out.println(productPriceMap);
          }
   </code></pre>
