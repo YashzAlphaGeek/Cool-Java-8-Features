@@ -505,11 +505,11 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
 ## Stream API's and Filter: :scream:
 ![](https://github.com/YashzAlphaGeek/cool-java-8-features/blob/master/imgs/Stream_API's_And_Filters.png)
 
-  # When to use Stream API and Filter :O
+# When to use Stream API and Filter :O
   
-   Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer <b> to get top 1 maximum and minimum priced mobile name and price alone.</b>
+  Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer <b> to get top 1 maximum and minimum priced mobile name and price alone.</b>
 
-   <pre><code>
+  <pre><code>
       /**
        * Get Max and Min Price Mobile Details
        * 
@@ -524,10 +524,10 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
         System.out.println("Mobile Name:"+minPricedMobile.getMobileName()+"|"+"Mobile Price:"+minPricedMobile.getMobilePriceInEUR());
         System.out.println();
       }   
-    </code></pre>
+   </code></pre>
     
     
-   Invoking of Stream API method
+  Invoking of Stream API method
    
    <pre><code>
       /**
@@ -537,9 +537,9 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
       public void getMaxPriceAndMinPriceMobile(MobileDeveloper developer) {
         getMaxAndMinPriceMobileDetail(developer.getAllMobile());
       }
-   </code><pre>
+   </code></pre>
 
-   In the other hand, if you wanna filter see the mobile prices greater than 5000EU in map means
+  In the other hand, if you wanna filter see the mobile prices greater than 5000EU in map means
 
   <pre><code>
         /**
