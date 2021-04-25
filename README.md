@@ -507,24 +507,24 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
 
 # When to use Stream API and Filter :O
   
-  Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer <b> to get top 1 maximum and minimum priced mobile name and price alone.</b>
+  Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer <b>to get top 1 maximum and minimum priced mobile name and price alone.</b>
 
   <pre><code>
-      /**
-       * Get Max and Min Price Mobile Details
-       * 
-       * @param allMobile
-       */
-        private void getMaxAndMinPriceMobileDetail(List<Mobile> allMobile) {
-        <b>Mobile maxPricedMobile = allMobile.stream().max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()>secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
-        <b>Mobile minPricedMobile = allMobile.stream().max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()<secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
-        System.out.println("Highest Priced Mobile:");
-        System.out.println("Mobile Name:"+maxPricedMobile.getMobileName()+"|"+"Mobile Price:"+maxPricedMobile.getMobilePriceInEUR());
-        System.out.println("Lowest Priced Mobile:");
-        System.out.println("Mobile Name:"+minPricedMobile.getMobileName()+"|"+"Mobile Price:"+minPricedMobile.getMobilePriceInEUR());
-        System.out.println();
-      }   
-   </code></pre>
+    /**
+     * Get Max and Min Price Mobile Details
+     * 
+     * @param allMobile
+     */
+    private void getMaxAndMinPriceMobileDetail(List<Mobile> allMobile) {
+      <b>Mobile maxPricedMobile = allMobile.stream().max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()>secondMob.getMobilePriceInEUR()?1:-1).get();</b>
+      <b>Mobile minPricedMobile = allMobile.stream().max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()<secondMob.getMobilePriceInEUR()?1:-1).get();</b>
+      System.out.println("Highest Priced Mobile:");
+      System.out.println("Mobile Name:"+maxPricedMobile.getMobileName()+"|"+"Mobile Price:"+maxPricedMobile.getMobilePriceInEUR());
+      System.out.println("Lowest Priced Mobile:");
+      System.out.println("Mobile Name:"+minPricedMobile.getMobileName()+"|"+"Mobile Price:"+minPricedMobile.getMobilePriceInEUR());
+      System.out.println();
+    }  
+  </code></pre>
     
     
   Invoking of Stream API method
@@ -548,7 +548,7 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
          * @param developer
          */
          public void getMaxMobliePriceAndNameInMap(MobileDeveloper developer) {
-         <b>Map<Long,String> productPriceMap =developer.getAllMobile().stream().filter(mob->mob.getMobilePriceInEUR()>5000)</b>.collect(Collectors.<b>toMap(mob->mob.mobilePriceInEUR, mob->mob.mobileName));</b>
+         <b>Map<Long,String> productPriceMap =developer.getAllMobile().stream().filter(mob->mob.getMobilePriceInEUR()>5000).collect(Collectors.toMap(mob->mob.mobilePriceInEUR, mob->mob.mobileName));</b>
          System.out.println(productPriceMap);
          }
   </code></pre>
