@@ -523,8 +523,8 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
        * @param allMobile
        */
         private void getMaxAndMinPriceMobileDetail(List<Mobile> allMobile) {
-        Mobile maxPricedMobile =  allMobile.stream().<b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()>secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
-        Mobile minPricedMobile =  allMobile.stream().<b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()<secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
+        Mobile maxPricedMobile =  allMobile.stream(). <b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()>secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
+        Mobile minPricedMobile =  allMobile.stream(). <b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()<secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
         System.out.println("Highest Priced Mobile:");
         System.out.println("Mobile Name:"+maxPricedMobile.getMobileName()+"|"+"Mobile Price:"+maxPricedMobile.getMobilePriceInEUR());
         System.out.println("Lowest Priced Mobile:");
