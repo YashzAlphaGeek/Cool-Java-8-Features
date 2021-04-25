@@ -509,7 +509,7 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
   
  Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer <b>to get top 1 maximum and minimum priced mobile name and price alone</b>.
 
-<pre><code>
+   <pre><code>
        /**
        * Get Max and Min Price Mobile
        */
@@ -523,29 +523,29 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
        * @param allMobile
        */
         private void getMaxAndMinPriceMobileDetail(List<Mobile> allMobile) {
-        Mobile maxPricedMobile =  allMobile.stream(). <b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()>secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
-        Mobile minPricedMobile =  allMobile.stream(). <b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()<secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
+        Mobile maxPricedMobile =  allMobile.stream().<b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()>secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
+        Mobile minPricedMobile =  allMobile.stream().<b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()<secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
         System.out.println("Highest Priced Mobile:");
         System.out.println("Mobile Name:"+maxPricedMobile.getMobileName()+"|"+"Mobile Price:"+maxPricedMobile.getMobilePriceInEUR());
         System.out.println("Lowest Priced Mobile:");
         System.out.println("Mobile Name:"+minPricedMobile.getMobileName()+"|"+"Mobile Price:"+minPricedMobile.getMobilePriceInEUR());
         System.out.println();
-      }
-</code></pre>
+      }   
+    </code></pre>
 
 In the other hand, if you wanna filter see the mobile prices greater than 5000EU in map means
 
-<pre><code>
-  /**
-     * Get Mobile Price & Name in Map
-     * 
-     * @param developer
-     */
-    public void getMaxMobliePriceAndNameInMap(MobileDeveloper developer) {
-      Map<Long,String> productPriceMap =developer.getAllMobile().stream().<b> filter(mob->mob.getMobilePriceInEUR()>5000)</b>.collect(Collectors.<b>toMap(mob->mob.mobilePriceInEUR, mob->mob.mobileName) </b> );
-      System.out.println(productPriceMap);
-    }
-</code></pre>
+  <pre><code>
+        /**
+         * Get Mobile Price & Name in Map
+         * 
+         * @param developer
+         */
+         public void getMaxMobliePriceAndNameInMap(MobileDeveloper developer) {
+         Map<Long,String> productPriceMap =developer.getAllMobile().stream().<b> filter(mob->mob.getMobilePriceInEUR()>5000)</b>.collect(Collectors.<b>toMap(mob->mob.mobilePriceInEUR, mob->mob.mobileName) </b> );
+         System.out.println(productPriceMap);
+         }
+  </code></pre>
 
    #### Outcome : :smiley:
    ![](https://raw.githubusercontent.com/YashzAlphaGeek/Cool-Java-8-Features/master/imgs/Stream_API_And_Stream_Filter.png) 
