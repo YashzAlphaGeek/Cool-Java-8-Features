@@ -507,7 +507,7 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
 
  ## Stream API and Filtering
   
- Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer <b>to get top 1 maximum and minimum priced mobile name and price alone</b>.
+   Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Developer <b>to get top 1 maximum and minimum priced mobile name and price alone</b>.
 
    <pre><code>
        /**
@@ -523,8 +523,8 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
        * @param allMobile
        */
         private void getMaxAndMinPriceMobileDetail(List<Mobile> allMobile) {
-        Mobile maxPricedMobile =  allMobile.stream(). <b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()>secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
-        Mobile minPricedMobile =  allMobile.stream(). <b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()<secondMob.getMobilePriceInEUR()?1:-1).get();<\b>
+        Mobile maxPricedMobile =  allMobile.stream(). <b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()>secondMob.getMobilePriceInEUR()?1:-1).get(); <\b>
+        Mobile minPricedMobile =  allMobile.stream(). <b> max((firstMob,secondMob)->firstMob.getMobilePriceInEUR()<secondMob.getMobilePriceInEUR()?1:-1).get(); <\b>
         System.out.println("Highest Priced Mobile:");
         System.out.println("Mobile Name:"+maxPricedMobile.getMobileName()+"|"+"Mobile Price:"+maxPricedMobile.getMobilePriceInEUR());
         System.out.println("Lowest Priced Mobile:");
@@ -533,7 +533,7 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
       }   
     </code></pre>
 
-In the other hand, if you wanna filter see the mobile prices greater than 5000EU in map means
+   In the other hand, if you wanna filter see the mobile prices greater than 5000EU in map means
 
   <pre><code>
         /**
