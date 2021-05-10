@@ -30,5 +30,4 @@ public  class Mobile {
 	
 	public long mobilePriceInEUR;
 	
-	
 }
