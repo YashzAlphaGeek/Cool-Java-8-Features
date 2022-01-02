@@ -1,4 +1,4 @@
-## Cool Java-8 Features
+### Cool Java-8 Features
 
 Java 8 introduced a series of ground-breaking features for the language, that proved to be more than useful for the everyday life of Java developers.It improves application performance without any specific work or tuning.
 
