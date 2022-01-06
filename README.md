@@ -556,3 +556,10 @@ Now assume like Mobile Manufacturer comes to Mobile Developer and asks the Devel
 
    #### Outcome : :smiley:
    ![](https://raw.githubusercontent.com/YashzAlphaGeek/Cool-Java-8-Features/master/imgs/Stream_API_And_Stream_Filter.png) 
+   
+------------------------------------------------------------------------------------
+“Thanks for watching. If you liked this page, make sure to subscribe for more!”
+
+	First, solve the problem. Then, write the code. 
+------------------------------------------------------------------------------------
+:grinning:
